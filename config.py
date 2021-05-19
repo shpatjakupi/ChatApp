@@ -11,7 +11,7 @@ class Config:
     """Set Flask configuration vars from .env file."""
 
     # Load in enviornemnt variables
-    # TESTING = os.getenv('TESTING')
-    # FLASK_DEBUG = os.getenv('FLASK_DEBUG')
-    # SERVER = os.getenv('SERVER')
+    TESTING = os.getenv('TESTING')
+    FLASK_DEBUG = os.getenv('FLASK_DEBUG')
     SECRET_KEY = os.getenv('SECRET_KEY')
+    SERVER = os.getenv('SERVER')
