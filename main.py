@@ -1,8 +1,8 @@
 from flask import session
 from flask_socketio import SocketIO
 import time
-from app import create_app
-from app.database import DataBase
+from website.app import create_app
+from website.app.database import DataBase
 import config
 
 # SETUP
