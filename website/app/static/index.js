@@ -158,9 +158,9 @@ window.onload = async function () {
   }
 };
 
-window.onload=function(){
-  $(function(){
-      if(window.location.protocol==="https:")
-          window.location.protocol="http";
-  });
-}
+// window.onload=function(){
+//   $(function(){
+//       if(window.location.protocol==="https:")
+//           window.location.protocol="http";
+//   });
+// }
