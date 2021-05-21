@@ -1,7 +1,7 @@
 from flask import Blueprint
-from flask import Flask, render_template, url_for, redirect, request, session, jsonify, flash, Blueprint
+from flask import Flask, render_template, url_for, redirect, request, session, jsonify, flash, Blueprint, cors
 from .database import DataBase
-
+from flask_cors import CORS, cross_origin
 view = Blueprint("views", __name__)
 
 
@@ -13,6 +13,7 @@ MSG_LIMIT = 20
 
 
 @view.route("/login", methods=["POST", "GET"])
+@cross_origin(allow_headers=['Content-Type'])
 def login():
     """
     displays main login page and handles saving name in session
@@ -32,6 +33,7 @@ def login():
 
 
 @view.route("/logout")
+@cross_origin(allow_headers=['Content-Type'])
 def logout():
     """
     logs the user out by popping name from session
@@ -44,6 +46,7 @@ def logout():
 
 @view.route("/")
 @view.route("/home")
+@cross_origin(allow_headers=['Content-Type'])
 def home():
     """
     displays home page if logged in
@@ -97,6 +100,7 @@ def subtract():
     return render_template("subtract.html", **{"session": session})
 
 @view.route("/history")
+@cross_origin(allow_headers=['Content-Type'])
 def history():
     if NAME_KEY not in session:
         flash("Login for at se dine beskeder")
@@ -108,6 +112,7 @@ def history():
 
 
 @view.route("/delete_messages")
+@cross_origin(allow_headers=['Content-Type'])
 def delete_messages():
     """
     :Delete messages
@@ -122,6 +127,7 @@ def delete_messages():
     return render_template("index.html", **{"session": session})
 
 @view.route("/get_name")
+@cross_origin(allow_headers=['Content-Type'])
 def get_name():
     """
     :return: a json object storing name of logged in user
@@ -133,6 +139,7 @@ def get_name():
 
 
 @view.route("/get_messages")
+@cross_origin(allow_headers=['Content-Type'])
 def get_messages():
     """
     :return: all messages stored in database
@@ -144,6 +151,7 @@ def get_messages():
     return jsonify(messages)
 
 @view.route("/get_history")
+@cross_origin(allow_headers=['Content-Type'])
 def get_history(name):
     """
     :param name: str
