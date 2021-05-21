@@ -1,1 +1,1 @@
-gunicorn main:app -w 1 --threads 12
+gunicorn main:app -w 4
