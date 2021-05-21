@@ -13,5 +13,6 @@ class Config:
     # Load in enviornemnt variables
     #TESTING = os.getenv('TESTING')
     #FLASK_DEBUG = os.getenv('FLASK_DEBUG')
+    enabledTransports = os.getenv('enabledTransports')
     SECRET_KEY = os.getenv('SECRET_KEY')
     SERVER = os.getenv('SERVER')
