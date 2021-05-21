@@ -1,1 +1,1 @@
-web:uwsgi main:app 
+web:gunicorn main:app -w 4
