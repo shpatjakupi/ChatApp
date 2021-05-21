@@ -1,1 +1,1 @@
-web: gunicorn server:app -k gevent --worker-connections 1000
+web: gunicorn server:app -w 4
