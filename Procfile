@@ -1,1 +1,1 @@
-web: gunicorn main:app -k gevent --worker-connections 1000
+gunicorn main:app -w 1 --threads 12
