@@ -103,7 +103,7 @@ function dateNow() {
   return cur_day + " " + hours + ":" + minutes;
 }
 
-var socket = io.connect("https://app2a.herokuapp.com/");
+var socket = io.connect("pip install flask-cors");
 socket.on("connect", async function () {
   var usr_name = await load_name();
   if (usr_name != "") {
