@@ -27,7 +27,7 @@ def login():
             flash(f'Velkommen! {name}.')
             return redirect(url_for("views.home"))
         elif name == 'admin':
-            session[NAME_KEY] = name
+            session[ADMIN] = name
             flash(f'Du inde som {name}.!')
             return redirect(url_for("views.home"))
         else:
@@ -122,7 +122,7 @@ def delete_messages():
     if NAME_KEY not in session:
         flash("KKun til læren!")
         return redirect(url_for("views.login"))
-    if NAME_KEY in session and NAME_KEY == 'admin':
+    if ADMIN in session and ADMIN == 'admin':
         db = DataBase()
         msgs = db.delete_messages()
         jsonify(msgs) 
