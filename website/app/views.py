@@ -7,7 +7,7 @@ view = Blueprint("views", __name__)
 
 # GLOBAL CONSTANTS
 NAME_KEY = 'name'
-ADMIN = 'name'
+ADMIN = 'admin'
 MSG_LIMIT = 20
 
 # VIEWS
