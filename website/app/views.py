@@ -112,10 +112,10 @@ def delete_messages():
     """
     :Delete messages
     """
-    if 'admin' not in session:
+    if NAME_KEY not in session:
         flash("KKun til læren!")
         return redirect(url_for("views.login"))
-    if 'admin' in session:
+    if NAME_KEY=='admin' in session:
         db = DataBase()
         msgs = db.delete_messages()
         jsonify(msgs) 
