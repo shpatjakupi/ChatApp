@@ -22,7 +22,7 @@ def login():
     """
     if request.method == "POST":  # if user input a name
         name = request.form["inputName"]
-        if len(name) >= 2 & name != 'admin':
+        if len(name) >= 2 and name != 'admin':
             session[NAME_KEY] = name
             flash(f'Velkommen! {name}.')
             return redirect(url_for("views.home"))
