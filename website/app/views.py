@@ -25,8 +25,14 @@ def login():
             session[NAME_KEY] = name
             flash(f'Velkommen! {name}.')
             return redirect(url_for("views.home"))
+        elif request.form["inputName"] == 'admin':
+            session[NAME_KEY] = 'admin'
+            flash(f'Velkommen! admin.')
+            return redirect(url_for("views.home"))
         else:
             flash("1Name must be longer than 1 character.")
+
+
 
     return render_template("login.html", **{"session": session})
 
@@ -115,7 +121,7 @@ def delete_messages():
     if NAME_KEY not in session:
         flash("KKun til læren!")
         return redirect(url_for("views.login"))
-    if NAME_KEY=='admin' in session:
+    if NAME_KEY in session:
         db = DataBase()
         msgs = db.delete_messages()
         jsonify(msgs) 
