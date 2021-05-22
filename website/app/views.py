@@ -26,9 +26,9 @@ def login():
             session[NAME_KEY] = name
             flash(f'Velkommen! {name}.')
             return redirect(url_for("views.home"))
-        elif request.form["inputName"] == ADMIN:
-            session[ADMIN] 
-            flash(f'Velkommen! admin.')
+        elif name == ADMIN:
+            session[ADMIN] = name
+            flash(f'Velkommen! [{name}].')
             return redirect(url_for("views.home"))
         else:
             flash("1Name must be longer than 1 character.")
