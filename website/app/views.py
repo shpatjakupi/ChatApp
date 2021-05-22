@@ -25,10 +25,6 @@ def login():
             session[NAME_KEY] = name
             flash(f'Velkommen! {name}.')
             return redirect(url_for("views.home"))
-        elif name == 'admin':
-            session[NAME_KEY] = name
-            flash(f'Velkommen! {name}.')
-            return redirect(url_for("views.home"))
         else:
             flash("1Name must be longer than 1 character.")
 
@@ -105,7 +101,7 @@ def subtract():
 @view.route("/history")
 def history():
     if 'NAME_KEY' not in session:
-        flash("Login for at se dine beskeder")
+        flash("LLogin for at se dine beskeder")
         return redirect(url_for("views.login"))
 
     json_messages = get_history(session[NAME_KEY])
@@ -121,7 +117,7 @@ def delete_messages():
     if NAME_KEY not in session:
         flash("KKun til læren!")
         return redirect(url_for("views.login"))
-    if NAME_KEY in session == 'admin':
+    if NAME_KEY in session:
         db = DataBase()
         msgs = db.delete_messages()
         jsonify(msgs) 
