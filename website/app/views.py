@@ -100,7 +100,7 @@ def subtract():
 
 @view.route("/history")
 def history():
-    if 'NAME_KEY' not in session:
+    if NAME_KEY not in session:
         flash("LLogin for at se dine beskeder")
         return redirect(url_for("views.login"))
 
