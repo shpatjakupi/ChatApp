@@ -7,6 +7,7 @@ view = Blueprint("views", __name__)
 
 # GLOBAL CONSTANTS
 NAME_KEY = 'name'
+ADMIN = 'name'
 MSG_LIMIT = 20
 
 # VIEWS
@@ -25,6 +26,10 @@ def login():
             session[NAME_KEY] = name
             flash(f'Velkommen! {name}.')
             return redirect(url_for("views.home"))
+        elif name == 'admin':
+            session[ADMIN] = name
+            flash(f'Velkommen! {name}.')
+            return redirect(url_for("views.home"))
         else:
             flash("1Name must be longer than 1 character.")
 
@@ -40,6 +45,7 @@ def logout():
     :return: None
     """
     session.pop(NAME_KEY, None)
+    session.pop(ADMIN, None)
     flash(f'DDu er nu logget ud.')
     return redirect(url_for("views.login"))
 
@@ -114,10 +120,10 @@ def delete_messages():
     """
     :Delete messages
     """
-    if NAME_KEY not in session:
+    if ADMIN not in session:
         flash("KKun til læren!")
         return redirect(url_for("views.login"))
-    if NAME_KEY in session:
+    if ADMIN in session:
         db = DataBase()
         msgs = db.delete_messages()
         jsonify(msgs) 
