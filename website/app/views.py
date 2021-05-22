@@ -21,6 +21,7 @@ def login():
     :return: None
     """
     if request.method == "POST":  # if user input a name
+        global name
         name = request.form["inputName"]
         if len(name) >= 2 and name != 'admin':
             session[NAME_KEY] = name
@@ -122,7 +123,7 @@ def delete_messages():
     if NAME_KEY not in session:
         flash("KKun til læren!")
         return redirect(url_for("views.login"))
-    if NAME_KEY in session and NAME_KEY == 'admin':
+    if NAME_KEY in session and name == 'admin':
         db = DataBase()
         msgs = db.delete_messages()
         jsonify(msgs) 
