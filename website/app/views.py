@@ -98,7 +98,7 @@ def subtract():
 
 @view.route("/history")
 def history():
-    if NAME_KEY not in session:
+    if 'NAME_KEY' not in session:
         flash("Login for at se dine beskeder")
         return redirect(url_for("views.login"))
 
@@ -112,10 +112,10 @@ def delete_messages():
     """
     :Delete messages
     """
-    if NAME_KEY not in session:
-        flash("Kun til læren!")
+    if 'admin' not in session:
+        flash("KKun til læren!")
         return redirect(url_for("views.login"))
-    if NAME_KEY in session:
+    if 'admin' in session:
         db = DataBase()
         msgs = db.delete_messages()
         jsonify(msgs) 
